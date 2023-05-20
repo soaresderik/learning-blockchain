@@ -37,6 +37,8 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
         interval,
     ]
 
+    console.log({ args })
+
     const raffle = await deploy("Raffle", {
         from: deployer,
         args,
@@ -46,7 +48,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
 
     if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         log("Verifying...")
-        await verify(raffle.address, arguments)
+        await verify(raffle.address, args)
     }
 
     log("----------------------------------------------------")

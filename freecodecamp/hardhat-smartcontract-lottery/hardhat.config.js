@@ -22,16 +22,38 @@ module.exports = {
             url: SEPOLIA_RPC_URL,
             accounts: [PRIVATE_KEY],
             chainId: 11155111,
+            saveDeployments: true,
             blockConfirmations: 6,
         },
     },
-    solidity: "0.8.8",
+    solidity: {
+        compilers: [
+            {
+                version: "0.8.8",
+            },
+            {
+                version: "0.4.24",
+            },
+        ],
+    },
     namedAccounts: {
         deployer: {
             default: 0,
         },
         player: {
             default: 1,
+        },
+    },
+    gasReporter: {
+        enabled: true,
+        currency: "USD",
+        outputFile: "gas-report.txt",
+        noColors: true,
+        coinmarketcap: COINMARKETCAP_API_KEY,
+    },
+    etherscan: {
+        apiKey: {
+            sepolia: ETHERSCAN_API_KEY,
         },
     },
     mocha: {
