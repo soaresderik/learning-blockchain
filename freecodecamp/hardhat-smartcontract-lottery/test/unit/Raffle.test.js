@@ -17,7 +17,7 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
           beforeEach(async () => {
               deployer = (await getNamedAccounts()).deployer // could also do with getNamedAccounts
 
-              await deployments.fixture(["mocks", "raffle"]) // Deploys modules with the tags "mocks" and "raffle"
+              await deployments.fixture(["mocks", "raffle", "all"]) // Deploys modules with the tags "mocks" and "raffle"
               vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock", deployer)
               raffle = await ethers.getContract("Raffle", deployer) // Returns a new connection to the Raffle contract
               subscriptionId = raffle.getSubscriptionId()
